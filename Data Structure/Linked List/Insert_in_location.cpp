@@ -22,14 +22,36 @@ void print_linked_list(Node* head)
     }
     cout << endl;
 }
-void insert_at_head(Node*& head) //address must be follow
+void insert_at_position(Node*& head, int position) //address must be follow
 {
     int val;
     cin >> val;
     Node* newNode = new Node(val);
 
-    newNode -> next = head;
-    head = newNode;
+    if(position == 0)
+    {
+        newNode->next = head;
+        head = newNode;
+        return;
+    }
+
+    Node* temp = head;
+    int currentIndex = 0;
+    while(temp != NULL && currentIndex < position - 1)
+    {
+        temp = temp -> next;
+        currentIndex++;
+    }
+
+    if(temp == NULL)
+    {
+        cout << "Position out of bounds" << endl;
+        delete newNode;
+        return;
+    }
+
+    newNode->next = temp->next;
+    temp -> next = newNode;
 }
 int main()
 {
@@ -44,9 +66,12 @@ int main()
     b->next = c;
     c->next = d;
 
+    int position;
+    cin >> position;
+
     cout << "Before Insert : ";
     print_linked_list(head);
-    insert_at_head(head);
+    insert_at_position(head, position);
     cout << "After insert: ";
     print_linked_list(head);
 

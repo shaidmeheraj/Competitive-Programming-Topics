@@ -9,8 +9,11 @@ int main()
     int loc = 0, mx = arr[0];
     for(int i=1; i<n; i++)
     {
-         if(arr[i] > mx) mx = arr[i];
-         loc = i; 
+         if(arr[i] > mx)
+         {
+            mx = arr[i];
+            loc = i;
+         } 
     }
-    cout << "Largest Element : " << mx << " Index : " << loc << endl;
+    cout << "Largest Element : " << mx << " Index : " << loc+1 << endl;
 }

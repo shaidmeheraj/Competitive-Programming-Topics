@@ -21,7 +21,7 @@ string infixToPostfix(string infix)
     for(char ch : infix)
     {
         //operand 
-        if(isalnum(ch))
+        if(isalnum(ch)) //isalnum (0-9 or A-Z or a-z)
         {
             postfix += ch;
         }
@@ -39,7 +39,7 @@ string infixToPostfix(string infix)
             }
             stk.pop();
         }
-        else if(isOperator(ch))
+        else if(isOperator(ch)) //+
         {
             while(!stk.empty() && precedence(stk.top()) >= precedence(ch))
             {

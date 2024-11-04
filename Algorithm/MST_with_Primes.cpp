@@ -58,7 +58,7 @@ int main()
     }
     memset(vis,false,sizeof(vis));
     int totalcost = prims(1);
-    // cout << totalcost << endl;
+    cout << totalcost << endl;
 
 }
 
